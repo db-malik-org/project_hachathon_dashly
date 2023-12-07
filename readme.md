@@ -61,7 +61,7 @@ Follow these instructions to get a copy of the project up and running on your lo
     npm start
     ```
 
-    The client will be accessible in your browser at `http://localhost:3000`.
+    The client will be accessible in your browser at `http://localhost:3000`:
 
 ## Contributing : 
 
