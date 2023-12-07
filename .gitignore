@@ -1,0 +1,35 @@
+# Ignore Node.js build artifacts
+node_modules/
+
+# Ignore the client build folder
+client/build/
+
+# Ignore server-specific files
+server/node_modules/
+server/dist/
+
+# Ignore environment files
+*.env
+
+# Ignore logs and generated files
+logs/
+*.log
+npm-debug.log*
+
+# Ignore macOS metadata and resource forks
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Ignore npm debugging files
+npm-debug.log
+yarn-error.log
+
+# Ignore VSCode configuration files
+.vscode/
+
+# Ignore environment-specific files
+.env.local
+.env.development.local
+.env.test.local
+.env.production
