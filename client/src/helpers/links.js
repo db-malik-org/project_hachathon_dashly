@@ -1,9 +1,14 @@
-const goToInstall = () => window.open('dashboard', '_blank');
+const goToInstall = () => window.open("dashboard", "_blank");
 
-const goToSources = () => window.open('https://github.com/helix-medical', '_blank');
+const goToSources = () =>
+  window.open("https://github.com/db-malik-org", "_blank");
 
-const goToDocs = () => window.open('https://helix-medical.github.io/docs/', '_blank');
+const goToDocs = () =>
+  window.open(
+    "https://github.com/db-malik-org/project_hachathon_dashly#readme",
+    "_blank"
+  );
 
-const goToDemo = () => window.open('https://helix-medical.github.io/demo/', '_blank');
+const goToDemo = () => window.open("dashboard", "_blank");
 
 export { goToInstall, goToSources, goToDocs, goToDemo };
