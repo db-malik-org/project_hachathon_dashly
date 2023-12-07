@@ -15,9 +15,6 @@ import HelixLogo from "./logo";
 import { goToInstall } from "helpers/links";
 import { useComponentsStyles } from "./styles";
 
-
-
-
 const links = [
   { label: "Home", link: "#" },
   { label: "Features", link: "#features" },
@@ -26,7 +23,7 @@ const links = [
     label: "Docs",
     link: "https://github.com/db-malik-org/project_hachathon_dashly#readme",
   },
-  { label: "contact", link: '/contact'}
+  { label: "Contact", link: "/contact" },
 ];
 
 const HeaderWebsite = () => {
@@ -34,7 +31,6 @@ const HeaderWebsite = () => {
   const [opened, { toggle }] = useDisclosure(false);
   const items = links.map((link) => {
     return (
-        
       <UnstyledButton
         key={link.label}
         className={classes.link}
