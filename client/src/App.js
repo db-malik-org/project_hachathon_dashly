@@ -17,6 +17,7 @@ import Monthly from "scenes/monthly";
 import Breakdown from "scenes/breakdown";
 import Admin from "scenes/admin";
 import Performance from "scenes/performance";
+import ContactForm from "scenes/contactform";
 
 function App() {
   const mode = useSelector((state) => state.global.mode);
@@ -27,7 +28,8 @@ function App() {
         <ThemeProvider theme={theme}>
           <CssBaseline />
           <Routes>
-          <Route path="/" element={<Landing />} />
+            <Route path="/" element={<Landing />} />
+            <Route path="/contact" element={<ContactForm />} />
             <Route element={<Layout />}>
               {/* <Route path="/dashboard" element={<Navigate to="/dashboard" replace />} /> */}
               <Route path="/dashboard" element={<Dashboard />} />

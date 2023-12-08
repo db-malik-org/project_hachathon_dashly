@@ -1,12 +1,22 @@
-import React from 'react'
-import { Image, Container, Title, Button, Group, Text, List, ThemeIcon, rem } from '@mantine/core'
-import { IconBrandGithub, IconCheck } from '@tabler/icons-react'
-import home from '../../../assets/landing/tax.jpg'
-import { useHeroStyles } from './styles'
-import { goToInstall, goToSources } from '../../../helpers/links'
+import React from "react";
+import {
+  Image,
+  Container,
+  Title,
+  Button,
+  Group,
+  Text,
+  List,
+  ThemeIcon,
+  rem,
+} from "@mantine/core";
+import { IconCheck } from "@tabler/icons-react";
+import home from "../../../assets/landing/tax.jpg";
+import { useHeroStyles } from "./styles";
+import { goToInstall } from "../../../helpers/links";
 
 const Hero = () => {
-  const { classes } = useHeroStyles()
+  const { classes } = useHeroStyles();
   return (
     <Container size="xl" className={classes.inner}>
       <div className={classes.content}>
@@ -18,8 +28,9 @@ const Hero = () => {
           Dashly Tax Analysis Just for You!
         </Title>
         <Text color="dimmed" mt="md">
-          Gérez votre patientèle, vos rendez-vous, vos consultations, vos factures et plus encore. Tout cela gratuitement, sans publicité et pour tout votre
-          cabinet.
+          Pour vérifier la situation fiscale de votre région, sélectionnez
+          simplement votre région et des tableaux magnifiquement détaillés vous
+          diront tout, le tout gratuitement !
         </Text>
 
         <List
@@ -33,32 +44,32 @@ const Hero = () => {
           }
         >
           <List.Item>
-            <b>Confidentiel</b> – Stocké directement chez vous.
+            <b>Précis</b> – Les sources de données sont exactes et fiables.
           </List.Item>
           <List.Item>
-            <b>Gratuit et open-source</b> – Pas de licence, pas de publicité, pas de frais cachés.
+            <b>Facile</b> – Facile et rapide à utiliser.
           </List.Item>
           <List.Item>
-            <b>Pour tout votre cabinet</b> – Disponible sur n'importe quel appareil.
-          </List.Item>
-          <List.Item>
-            <b>Conçu pour les ostéopathes</b> – En collaboration avec des ostéopathes.
+            <b>Visualisation</b> – Toutes les données sont présentées sous forme
+            de graphique, ce qui facilite la compréhension
           </List.Item>
         </List>
 
         <Group mt={30}>
-          <Button radius="xl" size="md" className={classes.control} onClick={() => goToInstall()}>
-            Installer Maintenant
-          </Button>
-          <Button variant="default" radius="xl" size="md" className={classes.control} leftIcon={<IconBrandGithub />} onClick={() => goToSources()}>
-            Code Source
+          <Button
+            radius="xl"
+            size="xl"
+            className={classes.control}
+            onClick={() => goToInstall()}
+          >
+            Entrez
           </Button>
         </Group>
       </div>
 
       <Image src={home} className={classes.image} />
     </Container>
-  )
-}
+  );
+};
 
-export default Hero
+export default Hero;

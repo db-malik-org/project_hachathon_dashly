@@ -1,74 +1,62 @@
-import { Kbd, Text } from '@mantine/core';
+import { Text } from "@mantine/core";
 import {
-    IconUsersGroup,
-    IconCalendar,
-    IconFileEuro,
-    IconBrandOpenSource,
-    IconGauge,
-    IconUserShield,
-} from '@tabler/icons-react';
+  IconChartBar,
+  IconChartPie,
+  IconChartTreemap,
+  IconBrandGoogleMaps,
+  IconChartBarOff,
+} from "@tabler/icons-react";
 
 const featuresData = [
-    {
-        title: 'Gestion des Patients',
-        description: (
-            <Text>
-                Vous pouvez gérer tous vos patients, leurs dossiers, leurs antécédents directement depuis la page{' '}
-                <Kbd>Patients</Kbd>.
-            </Text>
-        ),
-        icon: IconUsersGroup,
-    },
-    {
-        title: 'Gestion des Consultations',
-        description: (
-            <Text>
-                Avec le calendrier, vous avez une vision claire sur votre emploi du temps, et vous pouvez facilement
-                ajouter un rendez-vous quand vous êtes disponibles.
-            </Text>
-        ),
-        icon: IconCalendar,
-    },
-    {
-        title: 'Gestion des Factures',
-        description: (
-            <Text>
-                Gérez vos factures directement dans l'application. Vous pouvez directement les imprimer ou les envoyer
-                par mail à vos patients.
-            </Text>
-        ),
-        icon: IconFileEuro,
-    },
-    {
-        title: 'Open source',
-        description: (
-            <Text>
-                Helix est un logiciel libre, ce qui signifie que vous pouvez l'utiliser gratuitement, et même le
-                modifier. C'est un gage de transparence et de sécurité.
-            </Text>
-        ),
-        icon: IconBrandOpenSource,
-    },
-    {
-        title: 'Rapide',
-        description: (
-            <Text>
-                Helix est conçu pour être rapide et réactif. C'est une application directement dans votre navigateur,
-                qui ne nécessite pas d'installation. Vous pouvez l'utiliser sur n'importe quel appareil.
-            </Text>
-        ),
-        icon: IconGauge,
-    },
-    {
-        title: 'Confidentiel',
-        description: (
-            <Text>
-                Helix est designé pour être entièrement RGPD-compatible. Les données des patients ne sortent pas de
-                votre cabinet, et seuls les praticiens peuvent y avoir accès.
-            </Text>
-        ),
-        icon: IconUserShield,
-    },
+  {
+    title: "le nombre moyen de contribuables par région",
+    description: (
+      <Text>
+        Un diagramme circulaire montrant le nombre moyen de contribuables dans
+        chaque zone, étiqueté par des pourcentages.
+      </Text>
+    ),
+    icon: IconChartPie,
+  },
+  {
+    title: "la moyenne d'impôt en Euro par année",
+    description: (
+      <Text>
+        Affiche la taxe moyenne totale par année sous forme de diagramme à
+        barres.
+      </Text>
+    ),
+    icon: IconChartBar,
+  },
+  {
+    title: "la moyenne d'impôt en Euro par région et département",
+    description: (
+      <Text>
+        Recettes fiscales moyennes par région et province présentées sous forme
+        d'arborescence rectangulaire.
+      </Text>
+    ),
+    icon: IconChartTreemap,
+  },
+  {
+    title: "map de la moyenne d'impôt en Euro par région ",
+    description: (
+      <Text>
+        Les taxes moyennes par région sont indiquées sur le plan de la France.
+      </Text>
+    ),
+    icon: IconBrandGoogleMaps,
+  },
+  {
+    title: "la moyenne d'impôt en Euro par région",
+    description: (
+      <Text>
+        Sous forme de diagramme à barres, les impôts de chaque région sont
+        classés du plus grand au plus petit.
+      </Text>
+    ),
+    icon: IconChartBarOff,
+  },
 ];
 
 export { featuresData };
