@@ -25,7 +25,7 @@ const useHeroStyles = createStyles((theme) => ({
   },
 
   title: {
-    color: theme.colorScheme === "dark" ? "lightgrey" : "rgba(0, 0, 0, .8)",
+    color: "white",
     fontFamily: `Greycliff CF, ${theme.fontFamily}`,
     fontSize: rem(36),
     lineHeight: 2,
@@ -51,15 +51,16 @@ const useHeroStyles = createStyles((theme) => ({
     },
   },
 
-  highlight: {
-    position: "relative",
-    backgroundColor: theme.fn.variant({
-      variant: "light",
-      color: theme.primaryColor,
-    }).background,
-    borderRadius: theme.radius.sm,
-    padding: `${rem(4)} ${rem(12)}`,
-  },
-}));
+    highlight: {
+      position: "relative",
+      backgroundColor: theme.fn.variant({
+        variant: "light",
+        color: theme.primaryColor,
+      }).background,
+      borderRadius: theme.radius.sm,
+      padding: `${rem(4)} ${rem(12)}`,
+      color: "black", // Change the text color to black
+    },
+  }));
 
 export { useHeroStyles };

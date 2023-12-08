@@ -16,7 +16,7 @@ import { goToInstall } from "helpers/links";
 import { useComponentsStyles } from "./styles";
 
 const links = [
-  { label: "Home", link: "#" },
+  { label: "Acueil", link: "/" },
   { label: "Features", link: "#features" },
   { label: "FAQ", link: "#faq" },
   {

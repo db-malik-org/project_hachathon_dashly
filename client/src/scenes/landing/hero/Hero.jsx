@@ -21,11 +21,11 @@ const Hero = () => {
     <Container size="xl" className={classes.inner}>
       <div className={classes.content}>
         <Title className={classes.title}>
-          Simplify Your <span className={classes.highlight}>Taxation</span>
+          Simplifiez votre <span className={classes.highlight}>Fiscalité</span>
           <br />
-          Maximize Your <span className={classes.highlight}>Resources</span>
+          Maximisez vos <span className={classes.highlight}>Ressources</span>
           <br />
-          Dashly Tax Analysis Just for You!
+          Analyse fiscale Dashly juste pour vous !
         </Title>
         <Text color="dimmed" mt="md">
           Pour vérifier la situation fiscale de votre région, sélectionnez
@@ -43,13 +43,13 @@ const Hero = () => {
             </ThemeIcon>
           }
         >
-          <List.Item>
+          <List.Item style={{ color: "white" }}>
             <b>Précis</b> – Les sources de données sont exactes et fiables.
           </List.Item>
-          <List.Item>
+          <List.Item style={{ color: "white" }}>
             <b>Facile</b> – Facile et rapide à utiliser.
           </List.Item>
-          <List.Item>
+          <List.Item style={{ color: "white" }}>
             <b>Visualisation</b> – Toutes les données sont présentées sous forme
             de graphique, ce qui facilite la compréhension
           </List.Item>

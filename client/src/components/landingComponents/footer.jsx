@@ -68,11 +68,6 @@ const Footer = () => {
       </Container>
       <Container className={classes.inner}>
         <div style={{ display: "flex", justifyContent: "flex-start" }}>
-          <HelixLogo />
-        </div>
-      </Container>
-      <Container className={classes.inner}>
-        <div style={{ display: "flex", justifyContent: "flex-start" }}>
           <Text color="dimmed" size="sm">
             © 2021 Dashly. All rights reserved.
           </Text>
