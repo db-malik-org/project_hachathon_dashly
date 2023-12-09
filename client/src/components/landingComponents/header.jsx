@@ -18,7 +18,7 @@ import { useComponentsStyles } from "./styles";
 const links = [
   { label: "Acueil", link: "/" },
   { label: "Features", link: "#features" },
-  { label: "FAQ", link: "#faq" },
+  { label: "FAQ", link: "/faq" },
   {
     label: "Docs",
     link: "https://github.com/db-malik-org/project_hachathon_dashly#readme",

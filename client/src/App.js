@@ -18,6 +18,7 @@ import Breakdown from "scenes/breakdown";
 import Admin from "scenes/admin";
 import Performance from "scenes/performance";
 import ContactForm from "scenes/contactform";
+import FAQPage from "scenes/faq";
 
 function App() {
   const mode = useSelector((state) => state.global.mode);
@@ -30,6 +31,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Landing />} />
             <Route path="/contact" element={<ContactForm />} />
+            <Route path="/faq" element={<FAQPage />} />
             <Route element={<Layout />}>
               {/* <Route path="/dashboard" element={<Navigate to="/dashboard" replace />} /> */}
               <Route path="/dashboard" element={<Dashboard />} />

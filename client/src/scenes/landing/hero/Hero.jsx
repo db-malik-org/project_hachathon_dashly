@@ -21,16 +21,18 @@ const Hero = () => {
     <Container size="xl" className={classes.inner}>
       <div className={classes.content}>
         <Title className={classes.title}>
-          Simplifiez votre <span className={classes.highlight}>Fiscalité</span>
+          Simplifiez la gestion{" "}
+          <span className={classes.highlight}>Fiscale</span>
           <br />
-          Maximisez vos <span className={classes.highlight}>Ressources</span>
+          en utilisant une{" "}
+          <span className={classes.highlight}>Comparaison</span>
           <br />
-          Analyse fiscale Dashly juste pour vous !
+          d'impôts entre les <span className={classes.highlight}>régions.</span>
         </Title>
         <Text color="dimmed" mt="md">
-          Pour vérifier la situation fiscale de votre région, sélectionnez
-          simplement votre région et des tableaux magnifiquement détaillés vous
-          diront tout, le tout gratuitement !
+          L'Appel à l'Utilisation de l'Analyse Comparative de l'Impôt sur la
+          Fortune Immobilière entre les Régions pour une Gestion Équitable et
+          Informed
         </Text>
 
         <List
