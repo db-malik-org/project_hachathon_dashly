@@ -1,39 +1,39 @@
 import React, { useEffect, useState } from 'react'
 import FlexBetween from 'components/FlexBetween'
 import Header from 'components/Header'
-import { DownloadOutlined, Email, PointOfSale, PersonAdd, Traffic } from '@mui/icons-material'
-import { Box, Button, Typography, useTheme, useMediaQuery } from '@mui/material'
-import { DataGrid } from '@mui/x-data-grid'
-import BreakdownChart from 'components/BreakdownChart'
+import { Email, PointOfSale, PersonAdd, Traffic } from '@mui/icons-material'
+import { Box, Typography, useTheme, useMediaQuery } from '@mui/material'
 import OverviewChart from 'components/OverviewChart'
-import { useGetDashboardQuery } from 'state/api'
 import StatBox from 'components/StatBox'
 import BarChart from 'components/charts/BarChart'
 
-import axios from 'axios'
-import PieChart from "components/charts/PieChart"
-import LineChart from "components/charts/LineChart"
-import DepartmentCharts from "components/charts/DepartementCharts"
+import PieChart from 'components/charts/PieChart'
+import LineChart from 'components/charts/LineChart'
+import { getImpots } from 'services/axiosInstance'
+import PieCharts from 'components/charts/PieCharts'
+import DepartementPieChart from 'components/charts/PieCharts'
+import RegionDistributionChart from 'components/charts/RegionDistributionChart'
+import ImpotDistributionByYearPieChart from "components/charts/ImpotDistributionByYearPieChart"
+import RegionDistributionByDepartmentsPieChart from "components/charts/RegionDistributionByDepartmentsPieChart"
 
-const Dashboard = ({data, loading}) => {
+const Dashboard = ({data}) => {
   const theme = useTheme()
   const isNonMediumScreens = useMediaQuery('(min-width: 1200px)')
+  const [loading, setLoading] = useState(true)
+  const [impots, setImpots] = useState([])
 
-
-  //   useEffect(() => {
-  //     console.log(impots);
-  //   const fetchData = async () => {
-  //     try {
-  //       const response = await axios.get('localhost:8080/impots'); // Adjust the URL as needed
-  //       console.log(response.data);
-  //       setImpots(response.data);
-  //     } catch (error) {
-  //       console.error('Error fetching data:', error);
-  //     }
-  //   };
-
-  //   fetchData();
-  // }, []);
+  useEffect(() => {
+    const fetchRegionData = async () => {
+      try {
+        const impotData = await getImpots()
+        setImpots(impotData)
+        setLoading(false)
+      } catch (error) {
+        console.error('Error fetching regions in component:', error)
+      }
+    }
+    fetchRegionData()
+  }, [])
 
   const columns = [
     {
@@ -52,7 +52,7 @@ const Dashboard = ({data, loading}) => {
       flex: 1,
     },
     {
-      field: 'products',
+      field: 'Regions',
       headerName: '# of Products',
       flex: 0.5,
       sortable: false,
@@ -70,21 +70,6 @@ const Dashboard = ({data, loading}) => {
     <Box m="1.5rem 2.5rem">
       <FlexBetween>
         <Header title="DASHBOARD" subtitle="Welcome to your dashboard" />
-
-        <Box>
-          <Button
-            sx={{
-              backgroundColor: theme.palette.secondary.light,
-              color: theme.palette.background.alt,
-              fontSize: '14px',
-              fontWeight: 'bold',
-              padding: '10px 20px',
-            }}
-          >
-            <DownloadOutlined sx={{ mr: '10px' }} />
-            Download Reports
-          </Button>
-        </Box>
       </FlexBetween>
 
       <Box
@@ -97,8 +82,17 @@ const Dashboard = ({data, loading}) => {
           '& > div': { gridColumn: isNonMediumScreens ? undefined : 'span 12' },
         }}
       >
+        <Box gridColumn="span 4" gridRow="span 3" backgroundColor={theme.palette.background.alt} p="1.5rem" borderRadius="0.55rem">
+          <RegionDistributionChart data={impots} />
+        </Box>
+        <Box gridColumn="span 4" gridRow="span 3" backgroundColor={theme.palette.background.alt} p="1.5rem" borderRadius="0.55rem">
+          <ImpotDistributionByYearPieChart data={impots} />
+        </Box>
+        <Box gridColumn="span 4" gridRow="span 3" backgroundColor={theme.palette.background.alt} p="1.5rem" borderRadius="0.55rem">
+          <RegionDistributionByDepartmentsPieChart data={impots} />
+        </Box>
         {/* ROW 1 */}
-        <StatBox
+        {/* <StatBox
           title="Total Customers"
           value={data}
           increase="+14%"
@@ -111,26 +105,25 @@ const Dashboard = ({data, loading}) => {
           increase="+21%"
           description="Since last month"
           icon={<PointOfSale sx={{ color: theme.palette.secondary[300], fontSize: '26px' }} />}
-        />
+        /> */}
         <Box gridColumn="span 8" gridRow="span 2" backgroundColor={theme.palette.background.alt} p="1rem" borderRadius="0.55rem">
           <OverviewChart view="sales" isDashboard={true} />
-          <LineChart impots={data} />
-
+          {/* <LineChart impots={data} /> */}
         </Box>
-        <StatBox
+        {/* <StatBox
           title="Monthly Sales"
           value={data}
           increase="+5%"
           description="Since last month"
           icon={<PersonAdd sx={{ color: theme.palette.secondary[300], fontSize: '26px' }} />}
-        />
-        <StatBox
+        /> */}
+        {/* <StatBox
           title="Yearly Sales"
           value={data}
           increase="+43%"
           description="Since last month"
           icon={<Traffic sx={{ color: theme.palette.secondary[300], fontSize: '26px' }} />}
-        />
+        /> */}
 
         {/* ROW 2 */}
         <Box
@@ -162,23 +155,11 @@ const Dashboard = ({data, loading}) => {
             },
           }}
         >
-          {loading ? <h1>Loading...</h1> : <BarChart impots={data} />}
+          {loading ? <h1>Loading...</h1> : <BarChart impots={impots} />}
           {/* <DataGrid loading={isLoading || !data} getRowId={(row) => row._id} rows={(data && data.transactions) || []} columns={columns} /> */}
         </Box>
-
-        <Box gridColumn="span 4" gridRow="span 3" backgroundColor={theme.palette.background.alt} p="1.5rem" borderRadius="0.55rem">
-          <Typography variant="h6" sx={{ color: theme.palette.secondary[100] }}>
-            Sales By Category
-          </Typography>
-          <PieChart impots={data} />
-          {/* <BreakdownChart isDashboard={true} /> */}
-          {/* <Typography p="0 0.6rem" fontSize="0.8rem" sx={{ color: theme.palette.secondary[200] }}>
-            Breakdown of real states and information via category for revenue made for this year and total sales.
-          </Typography> */}
-        </Box>
-
       </Box>
-      <DepartmentCharts impots={data} />
+      {/* <DepartmentCharts impots={data} /> */}
     </Box>
   )
 }

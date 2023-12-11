@@ -47,17 +47,17 @@ const Navbar = ({ user, isSidebarOpen, setIsSidebarOpen }) => {
           <IconButton onClick={() => setIsSidebarOpen(!isSidebarOpen)}>
             <MenuIcon />
           </IconButton>
-          <FlexBetween
+          {/* <FlexBetween
             backgroundColor={theme.palette.background.alt}
             borderRadius="9px"
             gap="3rem"
             p="0.1rem 1.5rem"
-          >
-            <InputBase placeholder="Search..." />
+          > */}
+            {/* <InputBase placeholder="Search..." />
             <IconButton>
               <Search />
-            </IconButton>
-          </FlexBetween>
+            </IconButton> */}
+          {/* </FlexBetween> */}
         </FlexBetween>
 
         {/* RIGHT SIDE */}
@@ -74,7 +74,7 @@ const Navbar = ({ user, isSidebarOpen, setIsSidebarOpen }) => {
           </IconButton>
 
           <FlexBetween>
-            <Button
+            {/* <Button
               onClick={handleClick}
               sx={{
                 display: "flex",
@@ -84,15 +84,7 @@ const Navbar = ({ user, isSidebarOpen, setIsSidebarOpen }) => {
                 gap: "1rem",
               }}
             >
-              <Box
-                component="img"
-                alt="profile"
-                src={profileImage}
-                height="32px"
-                width="32px"
-                borderRadius="50%"
-                sx={{ objectFit: "cover" }}
-              />
+            
               <Box textAlign="left">
                 <Typography
                   fontWeight="bold"
@@ -108,10 +100,10 @@ const Navbar = ({ user, isSidebarOpen, setIsSidebarOpen }) => {
                   {user.occupation}
                 </Typography>
               </Box>
-              <ArrowDropDownOutlined
+              {/* <ArrowDropDownOutlined
                 sx={{ color: theme.palette.secondary[300], fontSize: "25px" }}
-              />
-            </Button>
+              /> */}
+            {/* </Button> */} 
             <Menu
               anchorEl={anchorEl}
               open={isOpen}

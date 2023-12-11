@@ -7,24 +7,9 @@ ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, T
 
 const LineChart = ({ impots }) => {
   const theme = useTheme();
-
-  // Group impots by 'annee' and calculate the average Moyenne Impôt Euros for each 'annee'
-  const groupedData = impots.reduce((acc, entry) => {
-    const key = entry.annee;
-    acc[key] = acc[key] || { total: 0, count: 0 };
-    acc[key].total += entry.moyenne_Impot_Euros;
-    acc[key].count += 1;
-    return acc;
-  }, {});
-
-  // Calculate the average for each 'annee'
-  const averages = Object.keys(groupedData).map((key) => ({
-    annee: parseInt(key),
-    moyenne_Impot_Euros: groupedData[key].total / groupedData[key].count,
-  }));
-
+  
   // Sort the averages array by 'annee' (year)
-  const sortedAverages = averages.sort((a, b) => a.annee - b.annee);
+  const sortedyears = impots.sort((a, b) => a.annee - b.annee);
 
   const options = {
     responsive: true,
@@ -39,14 +24,14 @@ const LineChart = ({ impots }) => {
     },
   };
 
-  const labels = sortedAverages.map((entry) => entry.annee);
+  const labels = sortedyears.map((entry) => entry.annee);
 
   const data = {
     labels,
     datasets: [
       {
         label: 'Average Moyenne Impôt Euros',
-        data: sortedAverages.map((entry) => entry.moyenne_Impot_Euros),
+        data: sortedyears.map((entry) => entry.moyenne_Impot_Euros),
         borderColor:theme.palette.primary,
         backgroundColor: 'rgb(37, 48, 42)',
       },
