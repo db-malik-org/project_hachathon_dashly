@@ -1,45 +1,40 @@
-import { CssBaseline, ThemeProvider } from "@mui/material";
-import { createTheme } from "@mui/material/styles";
-import { useEffect, useMemo, useState } from "react";
-import { useSelector } from "react-redux";
-import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
-import { themeSettings } from "theme";
-import Landing from "scenes/landing";
-import Layout from "scenes/layout";
-import Dashboard from "scenes/dashboard";
-import Products from "scenes/products";
-import Customers from "scenes/customers";
-import Transactions from "scenes/transactions";
-import Geography from "scenes/geography";
-import Overview from "scenes/overview";
-import Daily from "scenes/daily";
-import Monthly from "scenes/monthly";
-import Breakdown from "scenes/breakdown";
-import Admin from "scenes/admin";
-import Performance from "scenes/performance";
-import ContactForm from "scenes/contactform";
-import axios from "axios";
+import { CssBaseline, ThemeProvider } from '@mui/material'
+import { createTheme } from '@mui/material/styles'
+import { useEffect, useMemo, useState } from 'react'
+import { useSelector } from 'react-redux'
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
+import { themeSettings } from 'theme'
+import Landing from 'scenes/landing'
+import Layout from 'scenes/layout'
+import Dashboard from 'scenes/dashboard'
+import Region from 'scenes/region'
+import Annee from 'scenes/annee'
+import Transactions from 'scenes/transactions'
+import Geography from 'scenes/geography'
+import Overview from 'scenes/overview'
+import Daily from 'scenes/daily'
+import Monthly from 'scenes/monthly'
+import Breakdown from 'scenes/breakdown'
+import Admin from 'scenes/admin'
+import Performance from 'scenes/performance'
+import ContactForm from 'scenes/contactform'
+import { getImpotsByRegion } from 'services/axiosInstance'
 
 function App() {
-  const mode = useSelector((state) => state.global.mode);
-  const theme = useMemo(() => createTheme(themeSettings(mode)), [mode]);
-
-  const [loading, setLoading] = useState(true)
-  const [impots, setImpots] = useState([])
+  const mode = useSelector((state) => state.global.mode)
+  const theme = useMemo(() => createTheme(themeSettings(mode)), [mode])
+  const [data, setData] = useState([])
 
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchImpotByRegion = async (region) => {
       try {
-        const response = await axios.get('http://localhost:8080/impots') // Adjust the URL as needed
-        setImpots(response.data)
-        setLoading(false)
-        console.log(response.data)
+        const impotByRegions = await getImpotsByRegion(region)
+        setData(impotByRegions)
       } catch (error) {
-        console.error('Error fetching data:', error)
+        console.error('Error fetching regions in component:', error)
       }
     }
-
-    fetchData()
+    fetchImpotByRegion()
   }, [])
 
   return (
@@ -52,9 +47,9 @@ function App() {
             <Route path="/contact" element={<ContactForm />} />
             <Route element={<Layout />}>
               {/* <Route path="/dashboard" element={<Navigate to="/dashboard" replace />} /> */}
-              <Route path="/dashboard" element={<Dashboard data={impots} loading={loading} />} />
-              <Route path="/products" element={<Products />} />
-              <Route path="/customers" element={<Customers />} />
+              <Route path="/dashboard" element={<Dashboard data={data} />} />
+              <Route path="/regions" element={<Region data={data} />} />
+              <Route path="/annee" element={<Annee data={data} />} />
               <Route path="/transactions" element={<Transactions />} />
               <Route path="/geography" element={<Geography />} />
               <Route path="/power bi" element={<Overview />} />
@@ -68,7 +63,7 @@ function App() {
         </ThemeProvider>
       </BrowserRouter>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App

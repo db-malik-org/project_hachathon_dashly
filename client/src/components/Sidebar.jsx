@@ -26,68 +26,48 @@ import {
   AdminPanelSettingsOutlined,
   TrendingUpOutlined,
   PieChartOutlined,
-  InsertChartOutlined
+  InsertChartOutlined,
 } from "@mui/icons-material";
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import FlexBetween from "./FlexBetween";
 import profileImage from "assets/profile.jpeg";
-
 const navItems = [
   {
     text: "Dashboard",
     icon: <HomeOutlined />,
   },
   {
-    text: "Client Facing",
+    text: "Filters",
     icon: null,
   },
   {
-    text: "Products",
-    icon: <ShoppingCartOutlined />,
-  },
-  {
-    text: "Customers",
-    icon: <Groups2Outlined />,
-  },
-  {
-    text: "Transactions",
-    icon: <ReceiptLongOutlined />,
-  },
-  {
-    text: "Geography",
+    text: "Regions",
     icon: <PublicOutlined />,
   },
   {
-    text: "Sales",
-    icon: null,
+    text: "Annee",
+    icon: <Groups2Outlined />,
   },
   {
     text: "Power Bi",
     icon: <InsertChartOutlined />,
   },
+  // {
+  //   text: "Daily",
+  //   icon: <TodayOutlined />,
+  // },
+  // {
+  //   text: "Monthly",
+  //   icon: <CalendarMonthOutlined />,
+  // },
+
   {
-    text: "Daily",
-    icon: <TodayOutlined />,
-  },
-  {
-    text: "Monthly",
-    icon: <CalendarMonthOutlined />,
-  },
-  {
-    text: "Breakdown",
-    icon: <PieChartOutlined />,
-  },
-  {
-    text: "Management",
-    icon: null,
-  },
-  {
-    text: "Admin",
+    text: "Profile",
     icon: <AdminPanelSettingsOutlined />,
   },
   {
-    text: "Performance",
+    text: "parametre",
     icon: <TrendingUpOutlined />,
   },
 ];
