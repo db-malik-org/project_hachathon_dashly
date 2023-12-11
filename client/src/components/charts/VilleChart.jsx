@@ -1,5 +1,6 @@
 import React from 'react';
 import { Line } from 'react-chartjs-2';
+import 'chart.js/auto'
 
 const VilleChart = ({ villeData, villeName }) => {
   // Calculate the average Moyenne Impôt Euros over the years for the current ville

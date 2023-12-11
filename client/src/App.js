@@ -30,6 +30,7 @@ function App() {
       try {
         const impotByRegions = await getImpotsByRegion(region)
         setData(impotByRegions)
+        console.log(impotByRegions);
       } catch (error) {
         console.error('Error fetching regions in component:', error)
       }

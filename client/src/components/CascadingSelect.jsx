@@ -1,12 +1,13 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import MenuItem from '@mui/material/MenuItem'
 import Select from '@mui/material/Select'
 import FormControl from '@mui/material/FormControl'
 import InputLabel from '@mui/material/InputLabel'
-import { Box, Button, Card, CardContent } from '@mui/material'
+import { Box, Button, Card, CardContent, Typography } from '@mui/material'
 import LineChartProgressByYears from './charts/LineChartProgressByYears'
 import { useTheme } from '@emotion/react'
-import LineChartProgressByYearsContributor from "./charts/LineChartProgressByYearsContributor"
+import LineChartProgressByYearsContributor from './charts/LineChartProgressByYearsContributor'
+import 'chart.js/auto'
 
 const CascadingSelect = ({ data }) => {
   const theme = useTheme()
@@ -15,6 +16,7 @@ const CascadingSelect = ({ data }) => {
   const [selectedDepartment, setSelectedDepartment] = useState('')
   const [selectedCity, setSelectedCity] = useState('')
   const [filtredData, setFiltredData] = useState([])
+  const [showCharts, setShowCharts] = useState(false)
   // Get unique regions
   const regions = Array.from(new Set(data.map((item) => item.region))) || []
 
@@ -46,7 +48,14 @@ const CascadingSelect = ({ data }) => {
     // filteredData now contains the data corresponding to the selected region, department, and city
     console.log('Filtered Data:', filteredData)
     setFiltredData(filteredData)
+    setShowCharts(true)
   }
+
+  useEffect(() => {
+    if (!selectedRegion && !selectedDepartment && !selectedCity) {
+      setShowCharts(false)
+    }
+  }, [selectedCity, selectedRegion, selectedDepartment])
 
   return (
     <Box>
@@ -105,16 +114,52 @@ const CascadingSelect = ({ data }) => {
             </Select>
           </FormControl>
         </Box>
-        <Button variant="contained" color="primary" onClick={handleFilterApply}>
+        <Button sx={{ width: '200px' }} variant="contained" color="primary" onClick={handleFilterApply}>
           Valider
         </Button>
       </Box>
-
-      <Box sx={{ display: 'flex', gap: '20px' }}>
+      {showCharts ? (
+        <Box sx={{ display: 'flex', gap: '20px' }}>
+          <Card
+            sx={{
+              margin: '2rem 0',
+              width: '50%',
+              backgroundImage: 'none',
+              backgroundColor: theme.palette.background.alt,
+              borderRadius: '0.55rem',
+            }}
+          >
+            <CardContent
+              sx={{
+                color: theme.palette.neutral[300],
+              }}
+            >
+              <LineChartProgressByYears data={filtredData} />
+            </CardContent>
+          </Card>
+          <Card
+            sx={{
+              margin: '2rem 0',
+              width: '50%',
+              backgroundImage: 'none',
+              backgroundColor: theme.palette.background.alt,
+              borderRadius: '0.55rem',
+            }}
+          >
+            <CardContent
+              sx={{
+                color: theme.palette.neutral[300],
+              }}
+            >
+              <LineChartProgressByYearsContributor data={filtredData} />
+            </CardContent>
+          </Card>
+        </Box>
+      ) : (
         <Card
           sx={{
             margin: '2rem 0',
-            width: '50%',
+            width: '100%',
             backgroundImage: 'none',
             backgroundColor: theme.palette.background.alt,
             borderRadius: '0.55rem',
@@ -125,27 +170,12 @@ const CascadingSelect = ({ data }) => {
               color: theme.palette.neutral[300],
             }}
           >
-            <LineChartProgressByYears data={filtredData} />
+            <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '100px' }}>
+              <Typography sx={{ fontSize: '24px', fontWeight: '700' }}>Choisir une region, departement et une ville pour voir l'evolution</Typography>
+            </Box>
           </CardContent>
         </Card>
-        <Card
-          sx={{
-            margin: '2rem 0',
-            width: '50%',
-            backgroundImage: 'none',
-            backgroundColor: theme.palette.background.alt,
-            borderRadius: '0.55rem',
-          }}
-        >
-          <CardContent
-            sx={{
-              color: theme.palette.neutral[300],
-            }}
-          >
-            <LineChartProgressByYearsContributor data={filtredData} />
-          </CardContent>
-        </Card>
-      </Box>
+      )}
     </Box>
   )
 }

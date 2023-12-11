@@ -1,5 +1,6 @@
 import React from 'react'
 import VilleChart from './VilleChart'
+import 'chart.js/auto'
 
 const DepartmentCharts = ({ impots }) => {
   // Group impots by 'departement', 'ville', and 'annee'

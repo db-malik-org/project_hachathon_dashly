@@ -7,6 +7,7 @@ import ContrubuableByRegionCharts from 'components/charts/ContrubuableByRegionCh
 
 import { getRegion } from '../../services/axiosInstance'
 import CascadingSelect from 'components/CascadingSelect'
+import LineChartPredictions from 'components/charts/LineChartPredictions'
 
 const Regions = ({ data }) => {
   const isNonMobile = useMediaQuery('(min-width: 1000px)')
@@ -82,6 +83,10 @@ const Regions = ({ data }) => {
           <h1>Progressions des Impot par region</h1>
         </Typography>
         <CascadingSelect data={data} />
+      </Box>
+
+      <Box>
+        <LineChartPredictions data={data} />
       </Box>
     </Box>
     // </Box>

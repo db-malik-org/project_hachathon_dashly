@@ -1,7 +1,11 @@
 import React from 'react';
 import { Line } from 'react-chartjs-2';
+import 'chart.js/auto'
 
 const LineChartProgressByYears = ({ data }) => {
+
+
+  
   const chartData = {
     labels: data.map(entry => entry.annee),
     datasets: [
