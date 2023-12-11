@@ -1,5 +1,6 @@
 import React from 'react';
 import { Bar } from 'react-chartjs-2';
+import 'chart.js/auto'
 
 // chart top 5 first impots by region
 const ImpotByRegionChart = ({data, loading}) => {

@@ -1,5 +1,7 @@
 import React from 'react'
 import { Pie } from 'react-chartjs-2'
+import 'chart.js/auto'
+import { fixedColorPalette, hoverColor } from "helpers/constant"
 
 const ImpotDistributionByYearPieChart = ({ data }) => {
   // Group data by year and calculate total impots for each year
@@ -16,16 +18,16 @@ const ImpotDistributionByYearPieChart = ({ data }) => {
     datasets: [
       {
         data: Object.values(groupedData),
-        backgroundColor: ['#384d00', '#2D9596', '#9AD0C2', '#265073', 'rgba(75, 192, 192, 0.6)', 'rgba(255, 159, 64, 0.6)'],
-        hoverBackgroundColor: [ 'rgba(75, 192, 192, 0.6)', 'rgba(25, 28, 22, 0.6)'],
+        backgroundColor: fixedColorPalette,
+        hoverBackgroundColor: hoverColor,
       },
     ],
   }
 
   const canvasStyle = {
-    marginTop: '100px',
-    width: '345px', // You can use pixels or percentage based on your preference
-    height: '345px',
+    marginTop: '130px',
+    width: '355px', // You can use pixels or percentage based on your preference
+    height: '355px',
   }
   return (
     <div>

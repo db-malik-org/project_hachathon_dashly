@@ -1,5 +1,7 @@
 import React from 'react';
 import { Pie } from 'react-chartjs-2';
+import 'chart.js/auto'
+import { fixedColorPalette, hoverColor } from "helpers/constant";
 
 const RegionDistributionByDepartmentsPieChart = ({ data }) => {
   // Group data by region and calculate the number of unique departments for each region
@@ -19,17 +21,8 @@ const RegionDistributionByDepartmentsPieChart = ({ data }) => {
     datasets: [
       {
         data: departmentCounts,
-        backgroundColor: [
-          '#5a786b',
-          '#36A2EB',
-          '#152c45',
-          // Add more colors if needed
-        ],
-        hoverBackgroundColor: [
-          '#636dff',
-          '#8356ff',
-          // Add more colors if needed
-        ],
+        backgroundColor: fixedColorPalette,
+        hoverBackgroundColor: hoverColor,
       },
     ],
   };
@@ -37,7 +30,7 @@ const RegionDistributionByDepartmentsPieChart = ({ data }) => {
   return (
     <div>
       <h2>Distribution des régions par nombre de départements</h2>
-      <Pie data={regionData} />
+      <Pie  data={regionData} />
     </div>
   );
 };
