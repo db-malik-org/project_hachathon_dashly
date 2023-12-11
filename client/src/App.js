@@ -30,7 +30,6 @@ function App() {
       try {
         const impotByRegions = await getImpotsByRegion(region)
         setData(impotByRegions)
-        console.log(impotByRegions);
       } catch (error) {
         console.error('Error fetching regions in component:', error)
       }
@@ -45,9 +44,8 @@ function App() {
           <CssBaseline />
           <Routes>
             <Route path="/" element={<Landing />} />
-            <Route path="/contact" element={<ContactForm />} />
+            {/* <Route path="/contact" element={<ContactForm />} /> */}
             <Route element={<Layout />}>
-              {/* <Route path="/dashboard" element={<Navigate to="/dashboard" replace />} /> */}
               <Route path="/dashboard" element={<Dashboard data={data} />} />
               <Route path="/regions" element={<Region data={data} />} />
               <Route path="/annee" element={<Annee data={data} />} />
