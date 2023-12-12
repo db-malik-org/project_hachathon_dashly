@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import FlexBetween from 'components/FlexBetween'
 import Header from 'components/Header'
-import { Box, useTheme, Card, CardContent } from '@mui/material'
+import { Box, useTheme, Card, CardContent, Typography } from '@mui/material'
 import BarChart from 'components/charts/BarChart'
 
 import { getImpots } from 'services/axiosInstance'
@@ -91,8 +91,8 @@ const Dashboard = ({ data }) => {
           </CardContent>
         </Card>
       </Box>
-
-      <Box sx={{ display: 'flex', gap: '20px', mt: 10 }}>
+       <Typography  variant="h1" sx={{ color: theme.palette.neutral[300], mt: 10 }}>Evolution globale des impot est des contrubuables </Typography>
+      <Box sx={{ display: 'flex', gap: '20px' }}>
         <Card
           sx={{
             margin: '2rem 0',

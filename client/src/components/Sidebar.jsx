@@ -40,7 +40,7 @@ const navItems = [
     icon: <Groups2Outlined />,
   },
   {
-    text: "Power Bi",
+    text: "PowerBi",
     icon: <InsertChartOutlined />,
   },
   

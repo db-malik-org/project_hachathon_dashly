@@ -27,9 +27,7 @@ const ContributorsByYearCharts = ({data, loading}) => {
           display: true,
           text: 'Année',
         },
-        ticks: {
-          callback: (value) => String(value).replace(/^2/, '2'), 
-        },
+      
       },
       y: {
         title: {
@@ -48,7 +46,7 @@ const ContributorsByYearCharts = ({data, loading}) => {
 
   return (
     <div>
-      <h2>Les  impots  par année</h2>
+      <h2>Nombre de Contribuable  par année</h2>
       <Bar data={chartData} options={chartOptions} />
     </div>
   );
