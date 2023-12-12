@@ -1,6 +1,6 @@
 # Ignore Node.js build artifacts
 node_modules/
-data/
+
 # Ignore the client build folder
 client/build/
 
