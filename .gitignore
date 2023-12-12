@@ -10,7 +10,6 @@ server/dist/
 
 # Ignore environment files
 *.env
-config.json
 # Ignore logs and generated files
 logs/
 *.log
