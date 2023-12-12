@@ -17,6 +17,11 @@ const sequelize = new Sequelize({
 class Impot extends Model {}
 
 Impot.init({
+  id: {
+    type: DataTypes.INTEGER,
+    primaryKey: true,
+    autoIncrement: true,
+  },
   region: {
     type: DataTypes.STRING,
     allowNull: true,
@@ -68,10 +73,10 @@ Impot.init({
 }, {
   sequelize,
   modelName: 'Impot',
-  tableName: 'Impots', // Make sure this matches your actual table name
+  tableName: 'dataset_final', 
 });
 
 module.exports = {
-  Impot, // Export the model
-  sequelize, // Export the Sequelize instance
+  Impot, 
+  sequelize,
 };

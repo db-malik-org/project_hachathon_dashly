@@ -27,6 +27,9 @@ const LineChartProgressByYearsContributor = ({ data }) => {
           display: true,
           text: 'Année',
         },
+        ticks: {
+          callback: (value) => String(value).replace(/^2/, '2'), 
+        },
       },
       y: {
         type: 'linear',

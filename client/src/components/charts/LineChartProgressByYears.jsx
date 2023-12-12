@@ -30,6 +30,9 @@ const LineChartProgressByYears = ({ data }) => {
           display: true,
           text: 'Year',
         },
+        ticks: {
+          callback: (value) => String(value).replace(/^2/, '2'), 
+        },
       },
       y: {
         type: 'linear',

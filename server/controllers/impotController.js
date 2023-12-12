@@ -33,7 +33,7 @@ exports.getAllRegions = async (req, res) => {
       attributes: [
         'region',
         [sequelize.fn('avg', sequelize.col('moyenne_Impot_Euros')), 'avgImpot'],
-        [sequelize.fn('sum', sequelize.col('nombre_de_Contribuables')), 'sumContribuables'], // Add sum aggregation
+        [sequelize.fn('sum', sequelize.col('nombre_de_Contribuables')), 'sumContribuables'], 
       ],
       group: ['region'],
     })
@@ -49,6 +49,7 @@ exports.getImpotByRegion = async (req, res) => {
   try {
     const allRegions = await Impot.findAll({
       attributes: [
+        'id',
         'region',
         'departement',
         'code_Departement',
@@ -61,11 +62,9 @@ exports.getImpotByRegion = async (req, res) => {
         'code_Region',
       ],
     });
-
     const transformedData = allRegions.reduce((result, item) => {
       // Find the region in the result array
       let regionObj = result.find((entry) => entry.region === item.region);
-    
       // If the region doesn't exist, create a new entry
       if (!regionObj) {
         regionObj = {
@@ -103,38 +102,6 @@ exports.getImpotByRegion = async (req, res) => {
     
       return result;
     }, []);
-    
-
-    // // Group data by region and department
-    // const groupedData = allRegions.reduce((acc, item) => {
-    //   if (!acc[item.region]) {
-    //     acc[item.region] = {};
-    //   }
-
-    //   const regionData = acc[item.region];
-
-    //   if (!regionData[item.departement]) {
-    //     regionData[item.departement] = {
-    //       departement: item.departement,
-    //       data: [],
-    //     };
-    //   }
-
-    //   regionData[item.departement].data.push({
-    //     year: item.annee,
-    //     avgTax: item.moyenne_Impot_Euros,
-    //     // Add other relevant properties here
-    //   });
-
-    //   return acc;
-    // }, {});
-
-    // // Convert the grouped data to the required format
-    // const regionData = Object.entries(groupedData).map(([region, departmentData]) => ({
-    //   region,
-    //   data: Object.values(departmentData),
-    // }));
-
     res.json(transformedData);
   } catch (error) {
     console.error('Error fetching region data:', error);
