@@ -28,6 +28,9 @@ const ImpotByYearCharts = ({data, loading}) => {
           display: true,
           text: 'Année',
         },
+        ticks: {
+          callback: (value) => String(value).replace(/^2/, '2'), 
+        },
       },
       y: {
         title: {

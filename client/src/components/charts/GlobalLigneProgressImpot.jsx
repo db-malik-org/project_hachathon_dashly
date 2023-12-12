@@ -4,7 +4,6 @@ import 'chart.js/auto'
 
 const GlobalLigneProgressImpot = ({ data }) => {
   const [preparedData, setPreparedData] = useState([])
- console.log(data);
   useEffect(() => {
     const prepareData = (data) => {
       const result = []
@@ -40,7 +39,7 @@ const GlobalLigneProgressImpot = ({ data }) => {
     setPreparedData(preparedData)
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, [data])
 
   const chartData = {
     labels: preparedData.map((entry) => entry.annee),
@@ -52,7 +51,7 @@ const GlobalLigneProgressImpot = ({ data }) => {
         borderColor: '#505baf',
         borderWidth: 2,
         pointRadius: 5,
-        pointBackgroundColor: '#4bc0ae',
+        pointBackgroundColor: '#0f7767',
       },
     ],
   }
@@ -66,9 +65,9 @@ const GlobalLigneProgressImpot = ({ data }) => {
           display: true,
           text: 'Année',
         },
-        // ticks: {
-        //   callback: (value) => String(value).replace(/^2/, '2'),
-        // },
+        ticks: {
+          callback: (value) => String(value).replace(/^2/, '2'),
+        },
       },
       y: {
         type: 'linear',

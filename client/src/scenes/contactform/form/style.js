@@ -3,7 +3,7 @@ import { createStyles } from "@mantine/core";
 const useStyles = createStyles((theme) => ({
     form: {
         paddingTop: theme.spacing.md,
-        backgroundColor: "#191F45",
+        backgroundColor: theme.secondary,
     },
     container: {
         display: "flex",
@@ -22,7 +22,7 @@ const useStyles = createStyles((theme) => ({
         padding: "10px 20px",
         "&:hover": {
             backgroundColor: theme.fn.variant({
-                variant: "dark",
+                variant: "light",
                 color: theme.primaryColor,
             }).background,
         },

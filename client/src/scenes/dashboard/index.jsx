@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import FlexBetween from 'components/FlexBetween'
 import Header from 'components/Header'
-import { Box, useTheme, useMediaQuery, Card, CardContent } from '@mui/material'
+import { Box, useTheme, Card, CardContent } from '@mui/material'
 import BarChart from 'components/charts/BarChart'
 
 import { getImpots } from 'services/axiosInstance'
@@ -10,10 +10,10 @@ import ImpotDistributionByYearPieChart from 'components/charts/ImpotDistribution
 import RegionDistributionByDepartmentsPieChart from 'components/charts/RegionDistributionByDepartmentsPieChart'
 import GlobalLigneProgressImpot from 'components/charts/GlobalLigneProgressImpot'
 import GlobalLigneProgressContribuable from 'components/charts/GlobalLigneProgressContribuable'
+import DepartmentCharts from "components/charts/DepartementCharts"
 
 const Dashboard = ({ data }) => {
   const theme = useTheme()
-  const isNonMediumScreens = useMediaQuery('(min-width: 1200px)')
   const [loading, setLoading] = useState(true)
   const [impots, setImpots] = useState([])
 

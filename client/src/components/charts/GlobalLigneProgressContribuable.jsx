@@ -6,6 +6,7 @@ import 'chart.js/auto'
 const GlobalLigneProgressContribuable = ({ data }) => {
   const [preparedData, setPreparedData] = useState([])
  console.log(data);
+
   useEffect(() => {
     const prepareData = (data) => {
       const result = []
@@ -38,7 +39,7 @@ const GlobalLigneProgressContribuable = ({ data }) => {
     setPreparedData(preparedData)
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, [data])
 
   const chartData = {
     labels: preparedData.map((entry) => entry.annee),
@@ -47,7 +48,7 @@ const GlobalLigneProgressContribuable = ({ data }) => {
         label: 'Evolution du Nombre de Contribuables',
         data: preparedData.map((entry) => entry.nombre_de_Contribuables),
         fill: false,
-        borderColor: '#e74c3c',
+        borderColor: '#651f18',
         borderWidth: 2,
         pointRadius: 5,
         pointBackgroundColor: '#ff6b6b',
