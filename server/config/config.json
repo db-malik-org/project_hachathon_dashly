@@ -1,0 +1,38 @@
+{
+  "development": {
+    "username": "dashly",
+    "password": "database@1",
+    "database": "dashly",
+    "host": "dashly.database.windows.net",
+    "dialect": "mssql",
+    "dialectOptions": {
+      "options": {
+        "encrypt": true
+      }
+    }
+  },
+  "test": {
+    "username": "dashly",
+    "password": "database@1",
+    "database": "dashly",
+    "host": "dashly.database.windows.net",
+    "dialect": "mssql",
+    "dialectOptions": {
+      "options": {
+        "encrypt": true
+      }
+    }
+  },
+  "production": {
+    "username": "dashly",
+    "password": "database@1",
+    "database": "dashly",
+    "host": "dashly.database.windows.net",
+    "dialect": "mssql",
+    "dialectOptions": {
+      "options": {
+        "encrypt": true
+      }
+    }
+  }
+}

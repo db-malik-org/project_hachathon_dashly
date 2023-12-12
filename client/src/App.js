@@ -9,6 +9,7 @@ import Layout from 'scenes/layout'
 import Dashboard from 'scenes/dashboard'
 import Region from 'scenes/region'
 import Annee from 'scenes/annee'
+import PowerBi from 'scenes/powerBi'
 
 import { getImpotsByRegion } from 'services/axiosInstance'
 import ContactForm from "scenes/contactform/form"
@@ -41,6 +42,7 @@ function App() {
               <Route path="/dashboard" element={<Dashboard data={data} />} />
               <Route path="/regions" element={<Region data={data} />} />
               <Route path="/annee" element={<Annee data={data} />} />
+              <Route path="/powerBi" element={<PowerBi/>} />
               <Route path="/contact" element={<ContactForm />} />
             </Route>
           </Routes>

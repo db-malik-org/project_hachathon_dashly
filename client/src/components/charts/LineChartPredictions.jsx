@@ -134,6 +134,7 @@ const LineChartPredictions = ({ data }) => {
       </Box>
       <Card
         sx={{
+          width: '80%',
           backgroundImage: 'none',
           backgroundColor: theme.palette.background.alt,
           borderRadius: '0.55rem',
