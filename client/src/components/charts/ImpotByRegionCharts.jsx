@@ -46,7 +46,7 @@ const ImpotByRegionChart = ({data, loading}) => {
 
   return (
     <div>
-      <h2>Les 5 premiers impots moyens par region</h2>
+      <h2>Top 5 moyens impots  par region</h2>
       <Bar data={chartData} options={chartOptions} />
     </div>
   );

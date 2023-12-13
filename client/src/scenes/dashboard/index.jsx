@@ -91,7 +91,7 @@ const Dashboard = ({ data }) => {
           </CardContent>
         </Card>
       </Box>
-       <Typography  variant="h1" sx={{ color: theme.palette.neutral[300], mt: 10 }}>Evolution globale des impot est des contrubuables </Typography>
+       <Typography  variant="h1" sx={{ color: theme.palette.neutral[300], mt: 10 }}>Evolution globale des impot et des contrubuables </Typography>
       <Box sx={{ display: 'flex', gap: '20px' }}>
         <Card
           sx={{
